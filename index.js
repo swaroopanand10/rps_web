@@ -1,6 +1,7 @@
-    let user = 0
-    let comp = 0
-function round(computerChoice, userChoice) {
+let user = 0
+let comp = 0
+
+function round(computerChoice, userChoice) { //this function evaluates the winner for one round according to the values of human and computer
   if (computerChoice == userChoice) {
     console.log('tied')
     return
@@ -36,43 +37,41 @@ function round(computerChoice, userChoice) {
   }
 }
 
-function game() {
-
-  for (let index = 0; index < 5; index++) {
+function game() { // this the main function which holds 5 rounds 
+  for (let index = 0; index < 5; index++) { // the loop will be executed 5 times and will do each thing 5 times for each round
     let choices = ['rock', 'paper', 'scissor']
 
-    function getComputerChoice() {
+    function getComputerChoice() { // randomly generating computer choice
       let choice = choices[Math.floor(Math.random() * choices.length)]
       return choice
     }
 
     let computerChoice = getComputerChoice()
-    let userChoice = prompt('enter your choice').toLowerCase()
+    let userChoice = prompt('enter your choice').toLowerCase() // asking user for a choice
+
     console.log(`computer choice is ${computerChoice}`)
     console.log(`user choice is ${userChoice}`)
 
-    if (choices.indexOf(userChoice)==-1) {
+    if (choices.indexOf(userChoice) == -1) { // Throwing an error if user does not enter a valid choice
       throw new Error('please enter a valid choice')
     }
 
-    console.log(`round ${index+1} results: `)
-    round(computerChoice, userChoice)
-      console.log('\n')
+    console.log(`round ${index + 1} results: `) 
+    round(computerChoice, userChoice) // Prinnting the results for each round
+    console.log('\n')
   }
 
-    if (user > comp) {
-    console.log(user)
-    console.log(comp)
-      console.log('user wins the game')
-    } else if (user < comp) {
-    console.log(user)
-    console.log(comp)
-      console.log('computer wins the game')
+    // prinnting the number of times user and comp won in the whole game out of 5 rounds
 
-    } else {
-    console.log(user)
+    console.log(user) 
     console.log(comp)
-      console.log('game tied')
-    }
+
+  if (user > comp) {
+    console.log('user wins the game')
+  } else if (user < comp) {
+    console.log('computer wins the game')
+  } else {
+    console.log('game tied')
+  }
 }
 game()
